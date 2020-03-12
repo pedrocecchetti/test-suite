@@ -8,4 +8,8 @@
 
 ## Documentation:  
   
-  Area for documentation of the project.
+- To run the tests you first need to start the database:  
+```docker-compose up -d```
+
+- Then, to run the softare you should enter the terminal and then run:  
+```python main.py``` 
