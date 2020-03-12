@@ -43,19 +43,29 @@ def treat_results(results):
 def run(args):
     session = create_session()
     if args.run:
+        test_run = TestRun(
+            status='Running'
+        )
+        session.add(test_run)
+        session.commit()
+
         created_at, started_at, results = run_all_tests()
         end_time, summary, resume, environment = treat_results(results.stdout.split('\n'))
 
-        test_run = TestRun(
-            test=f"Test {created_at.timestamp()}",
-            created_at=created_at,
-            started_at=started_at,
-            finished_at=end_time,
-            status=resume
-        )
+        test_run.test = f"Test {str(created_at)}"
+        test_run.created_at = created_at
+        test_run.started_at = started_at
+        test_run.finished_at = end_time
+        test_run.status = resume
+        test_run.logs = results.stdout
+        test_run.environment = environment
+        test_run.status = 'Done'
 
         session.add(test_run)
         session.commit()
+
+        session.close()
+
     elif args.query:
         queryset = session.query(TestRun).all()
         list_of_tests = []
