@@ -11,5 +11,11 @@
 - To run the tests you first need to start the database:  
 ```docker-compose up -d```
 
-- Then, to run the softare you should enter the terminal and then run:  
-```python main.py``` 
+- To make it easier for the program to run, change the permissions levels on the file:  
+```chmod 755 main.py```
+
+- After that you are Ready to Go! 
+- To use the application, run on the terminal:  
+```./main.py --run```
+- If you need to query the info from the database, just run:  
+```./main.py --query```
