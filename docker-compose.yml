@@ -1,0 +1,11 @@
+db_test_suite:
+
+  image: "postgres:10"
+  container_name: "db_test_suite"
+  ports: 
+    - "5432:5432"
+  environment:
+    - POSTGRES_DB=TestSuite
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+  restart: always
