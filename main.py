@@ -33,17 +33,18 @@ def run_all_tests():
 
 def treat_results(results):
     end_time = datetime.datetime.now()
+    environment = results[1]
     summary_info_index = results.index('=========================== short test summary info ============================')
     summary = results[summary_info_index:-2]
     resume = results[-2].replace("=", '')
-    return end_time, summary, resume
+    return end_time, summary, resume, environment
 
 
 def run(args):
     session = create_session()
     if args.run:
         created_at, started_at, results = run_all_tests()
-        end_time, summary, resume = treat_results(results.stdout.split('\n'))
+        end_time, summary, resume, environment = treat_results(results.stdout.split('\n'))
 
         test_run = TestRun(
             test=f"Test {created_at.timestamp()}",
