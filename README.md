@@ -17,5 +17,5 @@
 - After that you are Ready to Go! 
 - To use the application, run on the terminal:  
 ```./main.py --run```
-- If you need to query the info from the database, just run:  
+- If you need to query the info from the database, just run:    
 ```./main.py --query```
