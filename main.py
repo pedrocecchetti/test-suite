@@ -1,4 +1,3 @@
-import asyncio
 import datetime
 import subprocess
 from sqlalchemy import create_engine
